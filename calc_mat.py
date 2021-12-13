@@ -19,6 +19,7 @@ _MAX_64 = 18446744073709551615
 class Processing:
     def __init__(self,lm):
         self.lm = lm
+        plt.ion()
         self.fig = plt.figure()
         self.count = 0
         self.SIZE_X_HIST = (self.lm.x2 - self.lm.x1)
