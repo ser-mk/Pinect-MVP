@@ -168,7 +168,7 @@ class Processing:
             return
 
         if self.lm == None:
-            print("laser marker ot exist")
+            print("the marker mask ot exist")
             return
 
         _sumPoint = None

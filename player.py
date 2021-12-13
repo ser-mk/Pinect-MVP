@@ -2,6 +2,7 @@
 
 import pickle
 import sys
+import time
 
 import cv2
 import matplotlib.pyplot as plt
@@ -52,7 +53,7 @@ if __name__ == '__main__':
 
     opt = Options()
     opt.start_num_frame = 0
-    num_frame = 0;
+    num_frame = 0
 
     proc = None
     key = None
@@ -88,7 +89,7 @@ if __name__ == '__main__':
                     cv2.rectangle(color_mask, (opt.lm.x1, opt.lm.y1), (opt.lm.x2, opt.lm.y2), (0, 255, 0), 1)
                     dst = cv2.addWeighted(frame, 0.7, color_mask, 0.3, 0)
                     if pos is not None:
-                        print("pos: ", pos)
+                        # print("pos: ", pos)
                         cv2.line(dst, (pos, 0), (pos, dst.shape[0]), (222, 0, 0), 3)
                 else:
                     dst = frame
@@ -126,7 +127,14 @@ if __name__ == '__main__':
                 if key == ord('m'):
                     print("Enter to the mask mode")
                     opt.lm = getRectLaser(filename, frame)
-                    proc = Processing(opt.lm)
+                    if proc is None:
+                        proc = Processing(opt.lm)
+                    else:
+                        plt.close()
+                        time.sleep(1)
+                        proc = Processing(opt.lm)
+
+
                     laser_calc_proccesing = True
 
                 if key == ord('l'):
