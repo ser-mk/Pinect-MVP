@@ -1,18 +1,11 @@
 #!/usr/bin/env python2
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Sep  1 22:30:44 2017
 
-@author: ser
-"""
-
+import time
 
 import numpy as np
 import cv2
-import sys
 
 import matplotlib.pyplot as plt
-import matplotlib.animation as manimation
 
 from rectangle_laser import getRectLaser, LaserMarked
 from calc_mat import Processing
@@ -63,17 +56,6 @@ if __name__ == '__main__':
     proc = None
     
     pos = None
-    """
-    fig = plt.figure()
-    
-    FFMpegWriter = manimation.writers['ffmpeg']
-    metadata = dict(title='Movie Test', artist='Matplotlib',
-                    comment='Movie support!')
-    writer = FFMpegWriter(fps=2, metadata=metadata)
-    grub_graphic = False
-    
-    with writer.saving(fig, "writer_test.mp4", 100):
-    """
     try:
         while(True):
             # Capture frame-by-frame
@@ -90,7 +72,7 @@ if __name__ == '__main__':
                 cap.grab()
                 
             
-             #cicrle proccesing frame if need
+            #cicrle proccesing frame if need
             while True :
                 
                 frame = next_frame.copy()
@@ -116,7 +98,6 @@ if __name__ == '__main__':
                 
                 
                 if laser_calc_proccesing and not_loop_frame:
-                    #proc.step(example_img,key) 
                     pos = proc.step(frame,key)
                 
                 # Display the resulting frame
@@ -125,15 +106,7 @@ if __name__ == '__main__':
                 period = cv2.getTrackbarPos(speed_bar, common_window) + 5
                 
                 key = cv2.waitKey(period)
-                #& 0xFF
-                """
-                if key == ord('g'):
-                    grub_graphic = not grub_graphic
-                    print('grub graphic ',grub_graphic)
-                    
-                if grub_graphic :
-                    writer.grab_frame()
-                """
+
                 if key == ord('q'):
                     raise terminateFrameLoop()
                     
@@ -156,7 +129,7 @@ if __name__ == '__main__':
 
                     
                 if key == ord('l'):
-                    try :
+                    try:
                         print('load option from ', filename, suffix_opt_file)
                         opt = pickle.load( open( filename + suffix_opt_file, "rb" ) )
                     except Exception as inst:
@@ -180,7 +153,7 @@ if __name__ == '__main__':
                 if not_loop_frame :
                     break
                     
-    except terminateFrameLoop:  # where to goto
+    except terminateFrameLoop:
         print("terminate laser proccesing")
     # When everything done, release the capture
     cap.release()

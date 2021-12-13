@@ -5,7 +5,6 @@ Created on Sat Sep  2 00:28:52 2017
 
 @author: ser
 """
-import numpy as np
 import cv2
 import sys
 from  grubcut_mask import GrubCutMask
@@ -26,7 +25,7 @@ def getRectLaser(filename = None, image = None):
     contour_laser = output_mask.copy()
     
     im2, contours, hierarchy = cv2.findContours(contour_laser,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
-    max_counter = max(contours, key = cv2.contourArea)
+    max_counter = max(contours, key=cv2.contourArea)
     
     x,y,w,h = cv2.boundingRect(max_counter)
     
@@ -46,7 +45,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 2:
         filename = sys.argv[1] # for drawing purposes
     else:
-        filename = '/home/ser/PIPI/led_line/filter/IPC_2017-07-08.17.43.06.6960.jpg'
+        filename = './led_line/filter/IPC_2017-07-08.17.43.06.6960.jpg'
 
     img = cv2.imread(filename)
 

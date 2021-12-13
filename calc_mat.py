@@ -9,10 +9,9 @@ Created on Mon Sep  4 23:37:05 2017
 import numpy as np
 import cv2
 import sys
-from rectangle_laser import getRectLaser, LaserMarked
+from rectangle_laser import getRectLaser
 import matplotlib.pyplot as plt
 import time
-import matplotlib.animation as manimation
 
 _MAX_64 = 18446744073709551615
 
@@ -267,10 +266,6 @@ if __name__ == '__main__':
         
         if k == ord('q'):
             break
-    
-    
-    
+
     plt.close()
-
-
     cv2.destroyAllWindows()

@@ -3,10 +3,10 @@
 """
 Created on Wed Jun  7 21:49:05 2017
 
-@author: echormonov
+@author: ?
 """
 # Python 2/3 compatibility
-#from __future__ import print_function
+
 
 import numpy as np
 import cv2
