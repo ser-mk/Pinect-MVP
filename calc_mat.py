@@ -181,7 +181,7 @@ class Processing:
         vert_hist = _sumPoint(image)
 
         plt.clf()
-        plt.title('freq DVB-T channel slide № ' + str(self.count))
+        plt.title('Ultra-narrow 1D image convolution. Cadr:' + str(self.count))
 
         if key == ord('t'):
             print("study min", self.study_min)
@@ -229,7 +229,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 2:
         filename = sys.argv[1]  # for drawing purposes
     else:
-        filename = './led_line/filter/IPC_2017-07-08.17.43.06.6960.jpg'
+        filename = 'res/capture_1.jpg'
 
     img = cv2.imread(filename)
 

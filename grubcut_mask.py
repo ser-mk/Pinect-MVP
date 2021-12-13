@@ -222,9 +222,9 @@ if __name__ == '__main__':
     if len(sys.argv) == 2:
         filename = sys.argv[1]  # for drawing purposes
     else:
-        print("No input image given, so loading default image, ../data/lena.jpg \n")
-        print("Correct Usage: python grabcut.py <filename> \n")
-        filename = '/home/ser/PIPI/led_line/filter/IPC_2017-07-08.17.43.06.6960.jpg'
+        print("No input image given, so loading default image, res/capture_1.jpg \n")
+        print("Correct Usage: python grabcut_mask.py <filename> \n")
+        filename = './res/capture_1.jpg'
 
     img = cv2.imread(filename)
 

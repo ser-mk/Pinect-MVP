@@ -19,19 +19,12 @@ class Options:
 
 if __name__ == '__main__':
 
-    # filename = './led_line/150R.2017-07-02.18.18.55.mp4'
-    # filename = './led_line/ccd/IPS_2017-08-27.19.15.08.mp4'
-    ##filename = './led_line/ccd0309/1.mp4'
-    ##filename = './led_line/ccd0309/IPS_2017-09-03.15.03.55.mp4'
-    ##filename = './led_line/ccd0309/IPS_2017-09-03.15.07.27.mp4'
-    ##filmename = './led_line/ccd0309/IPS_2017-09-03.15.03.55.mp4'
-    # filename = './led_line/ccd0309/IPS_2017-09-03.16.01.34.mp4'
-    # filename = './led_line/ccd0309/IPS_2017-09-03.16.04.13.mp4'
-    # filename = './led_line/ccd0309/IPS_2017-09-03.16.54.40.mp4'
-    # filename = './led_line/ccd0309/IPS_2017-09-03.16.43.17.mp4'
-    # filename = './led_line/ccd0309/IPS_2017-09-03.16.46.13.mp4'
-
-    filename = sys.argv[1]
+    if len(sys.argv) == 2:
+        filename = sys.argv[1]  # for drawing purposes
+    else:
+        print("No input video given, so loading default video file, res/test_2.mp4 \n")
+        print("Correct Usage: python grabcut.py <filename> \n")
+        filename = './res/test_2.mp4'
 
     suffix_opt_file = '.opt'
 
@@ -65,7 +58,7 @@ if __name__ == '__main__':
     key = None
     pos = None
     try:
-        while (True):
+        while True:
             # Capture frame-by-frame
             ret, next_frame = cap.read()
 
@@ -114,11 +107,13 @@ if __name__ == '__main__':
                 key = cv2.waitKey(period)
 
                 if key == ord('q'):
+                    print("-"*60)
                     print("your press 'q' key and exit execute =)")
                     raise terminateFrameLoop()
 
                 if key == ord(' '):
-                    print("pause ", not_loop_frame)
+                    print("your press space key",
+                          "putting on pause, press space key again for continue" if not_loop_frame else "continue processing")
                     not_loop_frame = not not_loop_frame
 
                 if key == ord('x'):
@@ -129,7 +124,7 @@ if __name__ == '__main__':
                           f" press 'x' to switch this option")
 
                 if key == ord('m'):
-                    print("laser marked procces...")
+                    print("Enter to the mask mode")
                     opt.lm = getRectLaser(filename, frame)
                     proc = Processing(opt.lm)
                     laser_calc_proccesing = True
@@ -159,7 +154,7 @@ if __name__ == '__main__':
                     break
 
     except terminateFrameLoop:
-        print("terminate laser proccesing")
+        print("terminate recognize proccesing")
     # When everything done, release the capture
     cap.release()
     cv2.destroyAllWindows()
