@@ -29,6 +29,13 @@ if __name__ == '__main__':
 
     suffix_opt_file = '.opt'
 
+    started_opt = None
+    try:
+        started_opt = pickle.load(open(filename + suffix_opt_file, "rb"))
+        print(f"loaded options file for {filename}")
+    except BaseException as e:
+        print(f"no options file for {filename}")
+
     cap = cv2.VideoCapture(filename)
     prev_mask = None
     current_mask = prev_mask
