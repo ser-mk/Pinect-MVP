@@ -29,9 +29,13 @@ if __name__ == '__main__':
 
     suffix_opt_file = '.opt'
 
-    started_opt = None
+    proc = None
+    opt = Options()
+    laser_calc_proccesing = False
     try:
-        started_opt = pickle.load(open(filename + suffix_opt_file, "rb"))
+        opt = pickle.load(open(filename + suffix_opt_file, "rb"))
+        proc = Processing(opt.lm)
+        laser_calc_proccesing = True
         print(f"loaded options file for {filename}")
     except BaseException as e:
         print(f"no options file for {filename}")
@@ -40,7 +44,6 @@ if __name__ == '__main__':
     prev_mask = None
     current_mask = prev_mask
     not_loop_frame = False
-    laser_calc_proccesing = False
 
 
     def nothing(*arg):
@@ -58,11 +61,9 @@ if __name__ == '__main__':
         pass  # declare a label
 
 
-    opt = Options()
     opt.start_num_frame = 0
     num_frame = 0
 
-    proc = None
     key = None
     pos = None
     try:
