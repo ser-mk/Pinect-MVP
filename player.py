@@ -23,9 +23,8 @@ if __name__ == '__main__':
     if len(sys.argv) == 2:
         filename = sys.argv[1]  # for drawing purposes
     else:
-        print("No input video given, so loading default video file, res/test_2.mp4 \n")
-        print("Correct Usage: python grabcut.py <filename> \n")
         filename = './res/test_2.mp4'
+        print(f"No input video given, so loading default video file, {filename} \n")
 
     suffix_opt_file = '.opt'
 

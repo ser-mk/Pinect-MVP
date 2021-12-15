@@ -32,6 +32,7 @@ class Processing:
         self.min_power = _MAX_64
         self.min_width_power = _MAX_64
         self.study_power = False
+        self.show_min_hist = False
 
     def _sumPointsBW(self, bw_image):
 
@@ -194,24 +195,28 @@ class Processing:
         if key == ord('d'):
             self._decMinHist(20)
 
+        if key == ord('a'):
+            print("show all histograms", self.show_min_hist)
+            self.show_min_hist = not self.show_min_hist
+
         pos = None
-
-        if self.study_min:
-            self._checkMinEl(vert_hist)
-        else:
-            sub = self._substractHist(vert_hist)
-            power = self._calcPower(sub)
-            plt.plot(sub)
-            plt.plot(power)
-            if self.study_power:
-                power, width = self._minPower(power)
-                sup = "p: " + str(power) + " w: " + str(width) + " gp: " + \
-                      str(self.min_power) + " gw: " + str(self.min_width_power)
-                self.fig.suptitle(sup)
+        if self.show_min_hist:
+            if self.study_min:
+                self._checkMinEl(vert_hist)
             else:
-                pos = self._findMaxPower(power)
+                sub = self._substractHist(vert_hist)
+                power = self._calcPower(sub)
+                plt.plot(sub)
+                plt.plot(power)
+                if self.study_power:
+                    power, width = self._minPower(power)
+                    sup = "p: " + str(power) + " w: " + str(width) + " gp: " + \
+                          str(self.min_power) + " gw: " + str(self.min_width_power)
+                    self.fig.suptitle(sup)
+                else:
+                    pos = self._findMaxPower(power)
 
-        plt.plot(self.min_hist)
+            plt.plot(self.min_hist)
 
         plt.plot(vert_hist)
         self.fig.canvas.draw()
