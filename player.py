@@ -49,8 +49,8 @@ if __name__ == '__main__':
         pass
 
 
-    common_window = 'player'
-    speed_bar = 'speed'
+    common_window = 'Pinect Algo Demo'
+    speed_bar = 'period refresh'
 
     cv2.namedWindow(common_window)
     cv2.createTrackbar(speed_bar, common_window, 20, 1888, nothing)
