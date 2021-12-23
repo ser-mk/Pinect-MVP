@@ -38,6 +38,9 @@ if __name__ == '__main__':
         print(f"loaded options file for {filename}")
     except BaseException as e:
         print(f"no options file for {filename}")
+        opt = Options()
+        proc = None
+        laser_calc_proccesing = False
 
     cap = cv2.VideoCapture(filename)
     prev_mask = None
