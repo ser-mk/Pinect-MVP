@@ -205,15 +205,16 @@ class Processing:
                 self._checkMinEl(vert_hist)
             else:
                 sub = self._substractHist(vert_hist)
-                power = self._calcPower(sub)
                 plt.plot(sub)
-                plt.plot(power)
                 if self.study_power:
-                    power, width = self._minPower(power)
-                    sup = "p: " + str(power) + " w: " + str(width) + " gp: " + \
+                    power = self._calcPower(sub)
+                    plt.plot(power)
+                # if self.study_power:
+                    power_f, width = self._minPower(power)
+                    sup = "p: " + str(power_f) + " w: " + str(width) + " gp: " + \
                           str(self.min_power) + " gw: " + str(self.min_width_power)
                     self.fig.suptitle(sup)
-                else:
+                # else:
                     pos = self._findMaxPower(power)
 
             plt.plot(self.min_hist)
