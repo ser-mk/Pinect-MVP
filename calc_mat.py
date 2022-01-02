@@ -19,7 +19,7 @@ _MAX_64 = 18446744073709551615
 
 
 class Processing:
-    def __init__(self, lm):
+    def __init__(self, lm, last_static_cadr:int = -1, study_power: bool = False):
         self.lm = lm
         plt.ion()
         self.fig = plt.figure()
@@ -31,8 +31,9 @@ class Processing:
         self.study_min = True
         self.min_power = _MAX_64
         self.min_width_power = _MAX_64
-        self.study_power = False
-        self.show_min_hist = False
+        self.study_power = study_power
+        self.last_static_cadr = last_static_cadr
+        self.show_min_hist = True if last_static_cadr > 0 else False
 
     def _sumPointsBW(self, bw_image):
 
@@ -200,6 +201,10 @@ class Processing:
             self.show_min_hist = not self.show_min_hist
 
         pos = None
+
+        if self.count == self.last_static_cadr:
+            self.study_min = False
+
         if self.show_min_hist:
             if self.study_min:
                 self._checkMinEl(vert_hist)

@@ -3,7 +3,7 @@
 import pickle
 import sys
 import time
-
+import argparse
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
@@ -19,12 +19,22 @@ class Options:
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(prog='main', description='Pinect Algorithm Demonstration')
 
-    if len(sys.argv) == 2:
-        filename = sys.argv[1]  # for drawing purposes
+    parser.add_argument('-f', help='video file for input', type=str)
+    parser.add_argument('-a', help='show static and nonstatic convolution graph and the subtraction of their', type=int)
+    parser.add_argument('-p', help='show power of subtraction peaks and calculated position of the stream', action='store_true')
+
+    args = parser.parse_args()
+
+    if args.f is not None:
+        filename = args.f
     else:
         filename = './res/test_2.mp4'
         print(f"No input video given, so loading default video file, {filename} \n")
+
+    last_static_cadr = args.a or -1
+    show_power = args.p or False
 
     suffix_opt_file = '.opt'
 
@@ -33,7 +43,7 @@ if __name__ == '__main__':
     laser_calc_proccesing = False
     try:
         opt = pickle.load(open(filename + suffix_opt_file, "rb"))
-        proc = Processing(opt.lm)
+        proc = Processing(opt.lm, last_static_cadr, show_power)
         laser_calc_proccesing = True
         print(f"loaded options file for {filename}")
     except BaseException as e:
