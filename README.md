@@ -32,7 +32,10 @@ use matplotlib version 3.2.2 for Windows OS
    ```sh
    python player.py
    ```
-![run Pinect MVP. cmdline](/res/run.gif)
+
+[demonstration](https://user-images.githubusercontent.com/6123791/212159902-ecfc327c-5528-40a5-97a6-cf93af9c11c1.webm)
+
+
 ## License
 
 MIT
