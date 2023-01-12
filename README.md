@@ -43,7 +43,10 @@ use matplotlib version 3.2.2 for Windows OS
 </center>
 -->
 
-[!(renamed webm)](https://github.com/ser-mk/ser-mk.github.io/raw/main/assets/Pinect/ch0/1run.mp4)
+
+https://user-images.githubusercontent.com/6123791/212158522-e44765bf-31c8-420e-8017-aa7893c19072.mp4
+
+
 
 ## License
 
