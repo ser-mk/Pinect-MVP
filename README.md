@@ -35,6 +35,7 @@ use matplotlib version 3.2.2 for Windows OS
 
 [demonstration](https://user-images.githubusercontent.com/6123791/212159902-ecfc327c-5528-40a5-97a6-cf93af9c11c1.webm)
 
+More options to run it: https://ser-mk.github.io/pinect/Pinect-idea2mvp/#lets-see-the-demo
 
 ## License
 
