@@ -1,7 +1,7 @@
 # Pinect-MVP
 
 ## Description
-This is the MVP project for my article on creating a hand-free game controller. Check out the repo for the code, and be sure to read the [**article**](https://ser-mk.github.io/posts/Pinect-idea2mvp/) for more information on the project's development and design.
+This is the MVP project for my article on creating a hand-free game controller. Check out the repo for the code, and be sure to read the [**article**](https://ser-mk.github.io/pinect/Pinect-idea2mvp/) for more information on the project's development and design.
 
 ## Getting Started
 
